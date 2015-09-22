@@ -17,26 +17,36 @@ namespace ConsoleApp
 
             int[,] matrixB = new int[3, 2] { { 3, 1 }, { 1, 2 }, { 3, 1 } };
 
+            int[,] matrixR = new int[2, 2];
+
             //int[,] arrayA = new int[3, 2] { { 2,4}, { 3,2} , { 0,1} };
 
 
             for (int i=0; i< matrixA.GetLength(0); i++)
             {
-
+                int sum = 0;
                 for (int j=0;j< matrixA.GetLength(1); j++)
                 {
-                    //Console.Write("matrixA[{0},{1}]: {2}  ", i, j, matrixA[i, j]);
+                    
+                    //Console.WriteLine("matrixA[{0},{1}]: {2}  *  matrixB[{1},{0}]: {3} ", i, j, matrixA[i, j], matrixB[j, i]);
 
-                    Console.Write("{0}  ", matrixA[i, j]);
+                    Console.Write("matrixA[{0},{1}]  *  matrixB[{1},{0}] =  {2} ", i, j, (matrixA[i, j] * matrixB[j, i]));
+
+
+                    sum = sum + (matrixA[i, j] * matrixB[j, i]);        
+
 
                     //Console.Write("j+1 = {0} % matrixA.GetLength(1) = {1} = {2}", j + 1, matrixA.GetLength(1), (j + 1) % matrixA.GetLength(1) );
-                    
-                    if ((j+1) % matrixA.GetLength(1) == 0)
+
+                    if ((j + 1) % matrixA.GetLength(1) == 0)
                     {
                         // Redefine the newline characters to double space.
                         Console.Write("\r\n\r\n");
+                        sum = 0;
                     }
-                }                
+                }
+
+                //Console.Write("matrixR: {0}  ", sum);
             }
 
 
